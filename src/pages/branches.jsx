@@ -8,6 +8,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 
+
 function Branches() {
   const [branches, setBranches] = useState([]);
   const [selectedBranchHours, setSelectedBranchHours] = useState(null);
@@ -15,7 +16,8 @@ function Branches() {
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const response = await axios.get('https://hook.eu2.make.com/94piqbb3uags8yiqwttrvp8gunmcdbza?q=branches');
+        const VITE_API_BASE_URL = 'https://hook.eu2.make.com/94piqbb3uags8yiqwttrvp8gunmcdbza';//import.meta.env.VITE_API_BASE_URL;
+        const response = await axios.get(`${VITE_API_BASE_URL}?q=branches`);
         setBranches(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
